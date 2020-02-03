@@ -1,0 +1,12 @@
+ try {
+            MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
+            ObjectName poolName = new ObjectName("com.zaxxer.hikari:type=Pool (foo)");
+            HikariPoolMXBean poolProxy = JMX.newMXBeanProxy(mBeanServer, poolName, HikariPoolMXBean.class);
+           // int idleConnections = poolProxy.getIdleConnections();
+        } catch (MalformedObjectNameException e) {
+            
+        }
+
+
+        hikariConfig.setMaximumPoolSize(20);
+        hikariConfig.setRegisterMbeans(true);
